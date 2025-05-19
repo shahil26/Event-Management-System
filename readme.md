@@ -1,88 +1,72 @@
-#Event Management System
+##Event Booking System - Frontend
+This is a modern React frontend for the Event Booking System. It provides a user-friendly interface for creating, viewing, and booking events.
 
-A full-stack Event Management System where users can view, book, and manage event details.
+#Features
+View all available events
+Search and filter events
+Create new events
+Book seats for events
+Cancel bookings
+Real-time seat availability tracking
+#Project Structure
+The project follows a modular component-based architecture:
 
----
-
-## 📁 Project Structure
-
-Event_management_system/
-├── backend/ # FastAPI backend
-├── Frontend/ # React frontend
-
-
-
----
-
-## Backend Setup (FastAPI + MongoDB)
-
-###  Requirements
-
-- Python 3.9+
-- [MongoDB](https://www.mongodb.com/try/download/community)
-- [Poetry](https://python-poetry.org/) or `pip` for dependency management (you can use `requirements.txt`)
-
-### 🔧 Setup Instructions
-
-1. **Navigate to the backend directory:**
-
-cd backend
-Create and activate a virtual environment (optional but recommended):
-
-python -m venv venv
-source venv/bin/activate   # On Windows: venv\Scripts\activate
-Install dependencies:
-
-pip install -r requirements.txt
-Set up environment variables:
-
-Create a .env file in the backend/ folder:
-
-MONGO_URL=mongodb+srv://{}:{}@project.zroupem.mongodb.net/?retryWrites=true&w=majority&appName=Project
-DB_NAME=event_booking_system
-
-Run the server:
-uvicorn main:app --reload
-Access the API:
-
-Swagger UI: http://localhost:8000/docs
-
-Frontend Setup (React)
-Requirements
-Node.js (v16+ recommended)
-
+src/components/: Contains all the reusable UI components
+src/pages/: Contains the page components
+src/contexts/: Contains the React contexts
+src/api/: Contains the API client and endpoint methods
+##Getting Started
+#Prerequisites
+Node.js (>= 14.x)
 npm or yarn
-
-🔧 Setup Instructions
-Navigate to the frontend directory:
-
-cd Frontend
+Backend API service running (FastAPI)
+#Installation
+Clone the repository:
+bash
+git clone <repository-url>
+cd event-booking-system-frontend
 Install dependencies:
+bash
 npm install
 # or
 yarn install
+Configure the API endpoint:
+Open src/api/api.js and update the baseURL to point to your backend API:
+
+javascript
+const API = axios.create({
+  baseURL: 'http://localhost:8000' // Replace with your backend URL
+});
 Start the development server:
-npm run dev
+bash
+npm start
 # or
 yarn start
-Access the frontend:
+The application will be available at http://localhost:3000.
 
-Open http://localhost:3000 in your browser
+#Available API Endpoints
+The frontend is designed to work with the following API endpoints:
 
-API and Frontend Integration
-Make sure the backend is running on http://localhost:8000.
+GET /events/ - Retrieve all events
+GET /events/{event_id} - Retrieve a specific event
+POST /events/ - Create a new event
+POST /events/{event_id}/book - Book a seat for an event
+DELETE /bookings/{booking_id} - Cancel a booking
+#Technologies Used
+React.js
+React Router
+Axios for API calls
+Tailwind CSS for styling
+date-fns for date formatting
+#Deployment
+To build the production version of the app:
 
-Update your frontend API calls accordingly (e.g., using axios or fetch to call http://localhost:8000/api/... endpoints).
+bash
+npm run build
+# or
+yarn build
+The build artifacts will be stored in the build/ directory.
 
-Features
--->View upcoming events
+#License
+This project is licensed under the MIT License.
 
--->Book event seats
-
--->Track availability
-
--->MongoDB for storage
-
--->FastAPI for backend API
-
--->React for frontend UI
